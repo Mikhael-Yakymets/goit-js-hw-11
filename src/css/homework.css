@@ -1,32 +1,37 @@
+.loader-container {
+  position: fixed; /* Фіксоване позиціонування */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Центрування */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  /* background-color: rgba(255, 255, 255, 0.5); Легка біла підкладка */
+  /* z-index: 1000; Поверх інших елементів */
+}
+
 .loader {
-  position: relative;
-  width: 100px;
-  height: 100px;
-  margin: auto;
-}
-
-.loader:before,
-.loader:after {
-  content: '';
+  width: 48px;
+  height: 48px;
+  border: 5px solid;
+  border-color: #ff3d00 transparent;
   border-radius: 50%;
-  position: absolute;
-  inset: 0;
-  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.3) inset;
-}
-.loader:after {
-  box-shadow: 0 2px 0 #ff3d00 inset;
-  animation: rotate 2s linear infinite;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
 }
 
-@keyframes rotate {
+@keyframes rotation {
   0% {
-    transform: rotate(0);
+    transform: rotate(0deg);
   }
   100% {
     transform: rotate(360deg);
   }
 }
 
-.hidden {
+.visually-hidden {
   display: none;
 }
