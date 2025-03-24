@@ -1,12 +1,14 @@
-// напиши всю логіку роботи додатка
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
 // Import functions
 import { getImagesGallery } from './js/pixabay-api';
-import { gallaryMarkUp } from './js/render-functions';
-import { showLoader } from './js/render-functions';
-import { hideLoader } from './js/render-functions';
+import {
+  gallaryMarkUp,
+  showLoader,
+  hideLoader,
+  clearGallery,
+} from './js/render-functions';
 
 //#region tacke imput
 const refs = {
@@ -23,7 +25,22 @@ async function onSearchSubmit(event) {
   const form = event.currentTarget;
   const { searchText } = form.elements;
 
-  showLoader();
+  //#region check field
+  const checkTextForm = form.elements.searchText.value.trim();
+
+  if (checkTextForm === '') {
+    event.preventDefault();
+    iziToast.warning({
+      title: 'Warning',
+      message: 'Please complete the field',
+      position: 'topCenter',
+    });
+    return;
+  }
+  //#endregion check field
+
+  showLoader(); // Loader
+  clearGallery(); // Clear Gallery
 
   try {
     const { hits, totalHits } = await getImagesGallery(searchText.value);

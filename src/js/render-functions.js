@@ -1,19 +1,21 @@
-// функції для відображення елементів інтерфейсу (додавання, оновлення, очищення елементів галереї; відображення, приховування лоедера).
-
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const photoList = document.querySelector('.js-gallary');
-const loader = document.querySelector('.loader');
+const loader = document.querySelector('.loader-container');
 
 let lightbox = new SimpleLightbox('.js-gallary a', {
   captionsData: 'alt',
   captionDelay: 250,
 });
 
-export function gallaryMarkUp(pictures = []) {
+//#region Clear Gallery
+export function clearGallery() {
   photoList.innerHTML = '';
+}
+//#endregion Clear Gallery
 
+export function gallaryMarkUp(pictures = []) {
   const markup = pictures
     .map(
       ({

@@ -1,5 +1,3 @@
-//  функції для HTTP-запитів
-
 import axios from 'axios';
 
 const API_KEY = '49361857-acd351382a63090e65700df5d';
