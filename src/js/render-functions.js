@@ -54,9 +54,7 @@ export function gallaryMarkUp(pictures = []) {
                 <p class="attribute-value">${downloads}</p>
               </div>
             </div>
-          </li>
-        </ul>
-      </div>`;
+          </li>`;
       }
     )
     .join('');
